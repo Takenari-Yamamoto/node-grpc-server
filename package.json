@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.20.1",
-    "grpc": "^1.24.11"
+    "grpc": "^1.24.11",
+    "ts-node": "^10.8.1"
   }
 }
