@@ -4,9 +4,11 @@ set -eu
 
 export PATH="$PATH:$(yarn bin)"
 
-PROTO_SRC=./proto
-PROTO_DEST=./src/proto
+# protoファイルがあるディレクトリへの相対パス
+PROTO_SRC=../../proto
 
+# 生成したjs、tsファイルを格納したいディレクトリへの相対パス
+PROTO_DEST=./src/proto
 mkdir -p ${PROTO_DEST}
 
 grpc_tools_node_protoc \
@@ -17,7 +19,7 @@ grpc_tools_node_protoc \
   ${PROTO_SRC}/*
 
 grpc_tools_node_protoc \
-  --plugin=protoc-gen-ts=$(npm bin)/protoc-gen-ts \
+  --plugin=protoc-gen-ts=$(yarn bin)/protoc-gen-ts \
   --ts_out=${PROTO_DEST} \
   -I ${PROTO_SRC} \
   ${PROTO_SRC}/*
